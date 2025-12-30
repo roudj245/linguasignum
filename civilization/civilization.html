@@ -1,0 +1,71 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Linguistic Civilization</title>
+    <link rel="stylesheet" href="civilization.css">
+</head>
+<body>
+    <div class="background-animation" id="bgAnimation"></div>
+
+    <div class="container">
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+
+        <div class="header">
+            <h1>Create Your<br>Linguistic Civilization</h1>
+            <div class="divider"></div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="userName" placeholder="Enter your name...">
+            </div>
+
+            <div class="form-group">
+                <label>Name of Your Civilization</label>
+                <input type="text" id="civilizationName" placeholder="e.g., The Keepers of Ancient Words...">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="#B6761C" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Linguistic System
+                </label>
+                <textarea id="languageSystem" placeholder="Describe the writing system, unique sounds, and grammar of your language..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="#B6761C" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    New Words and Expressions
+                </label>
+                <input type="text" id="newWords" placeholder="e.g., Salam-terra (hello), Kitab-noor (book of light)...">
+                <p class="helper-text">Mix roots from different languages to create your unique vocabulary</p>
+            </div>
+
+            <button class="submit-btn" id="submitBtn">
+                Create My Civilization
+            </button>
+        </div>
+
+        <div class="success-message" id="successMessage"></div>
+
+        <div class="footer-text">
+            Every civilization is born from its language. Create yours and leave your linguistic legacy.
+        </div>
+    </div>
+
+    <script src="civilization.js"></script>
+</body>
+</html>
