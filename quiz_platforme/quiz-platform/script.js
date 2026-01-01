@@ -1,5 +1,5 @@
 // CONFIGURE YOUR BACKEND API URL HERE
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://quiz-api-9mpw.onrender.com';
 
 // QUESTION BANK
 const allQuestions = [
@@ -251,81 +251,64 @@ const allQuestions = [
         correct: 2
     },
     
-    // Deutsch (German)
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Chemische Formeln helfen uns, die Zusammensetzung von Stoffen zu verstehen.",
-        question: "Was ist die chemische Formel für Wasser?",
-        answers: ["H2O", "CO2", "O2", "H2O2"],
-        correct: 0
-    },
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Physikalische Eigenschaften von Wasser sind im Alltag wichtig.",
-        question: "Was ist der Siedepunkt von Wasser auf Meereshöhe?",
-        answers: ["90°C", "100°C", "110°C", "120°C"],
-        correct: 1
-    },
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Deutschland hat eine föderale Struktur mit verschiedenen Regionen.",
-        question: "Wie viele Bundesländer hat Deutschland?",
-        answers: ["14", "15", "16", "17"],
-        correct: 2
-    },
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Die deutsche Literatur hat viele weltberühmte Werke hervorgebracht.",
-        question: "Wer schrieb 'Faust'?",
-        answers: ["Schiller", "Goethe", "Heine", "Kafka"],
-        correct: 1
-    },
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Europäische Hauptstädte sind kulturelle und politische Zentren.",
-        question: "Was ist die Hauptstadt von Spanien?",
-        answers: ["Barcelona", "Madrid", "Valencia", "Sevilla"],
-        correct: 1
-    },
-    {
-        language: "Deutsch",
-        langCode: "de",
-        intro: "Zeiteinheiten sind grundlegend für unser Verständnis von Zeit.",
-        question: "Wie viele Sekunden hat eine Stunde?",
-        answers: ["3000", "3600", "4200", "3300"],
-        correct: 1
-    },
     
-    // Italiano (Italian)
+{
+    language: "Türkçe",
+    langCode: "tr",
+    intro: "Kimyasal formüller maddelerin bileşimini anlamamıza yardımcı olur.",
+    question: "Suyun kimyasal formülü nedir?",
+    answers: ["H2O", "CO2", "O2", "H2O2"],
+    correct: 0
+},
+{
+    language: "Türkçe",
+    langCode: "tr",
+    intro: "Suyun fiziksel özellikleri günlük hayatta önemlidir.",
+    question: "Deniz seviyesinde suyun kaynama noktası nedir?",
+    answers: ["90°C", "100°C", "110°C", "120°C"],
+    correct: 1
+},
+{
+    language: "Türkçe",
+    langCode: "tr",
+    intro: "Avrupa başkentleri kültürel ve politik merkezlerdir.",
+    question: "İspanya'nın başkenti neresidir?",
+    answers: ["Barselona", "Madrid", "Valensiya", "Sevilla"],
+    correct: 1
+},
+{
+    language: "Türkçe",
+    langCode: "tr",
+    intro: "Zaman birimleri zamanı anlamamız için temeldir.",
+    question: "Bir saatte kaç saniye vardır?",
+    answers: ["3000", "3600", "4200", "3300"],
+    correct: 1
+},
+     
     {
-        language: "Italiano",
-        langCode: "it",
-        intro: "Le capitali europee sono ricche di storia e cultura.",
-        question: "Qual è la capitale dell'Italia?",
-        answers: ["Milano", "Napoli", "Roma", "Firenze"],
-        correct: 2
-    },
-    {
-        language: "Italiano",
-        langCode: "it",
-        intro: "Il calendario ci aiuta a organizzare il tempo durante l'anno.",
-        question: "Quanti giorni ci sono in febbraio (anno non bisestile)?",
-        answers: ["27", "28", "29", "30"],
-        correct: 1
-    },
-    {
-        language: "Italiano",
-        langCode: "it",
-        intro: "L'arte rinascimentale italiana è ammirata in tutto il mondo.",
-        question: "Chi ha dipinto la Cappella Sistina?",
-        answers: ["Leonardo", "Michelangelo", "Raffaello", "Donatello"],
-        correct: 1
-    }
+    language: "한국어",
+    langCode: "ko",
+    intro: "유럽 수도들은 역사와 문화가 풍부합니다.",
+    question: "이탈리아의 수도는 어디입니까?",
+    answers: ["밀라노", "나폴리", "로마", "피렌체"],
+    correct: 2
+},
+{
+    language: "한국어",
+    langCode: "ko",
+    intro: "달력은 일년 동안 시간을 구성하는 데 도움이 됩니다.",
+    question: "2월에는 며칠이 있습니까 (윤년이 아닌 해)?",
+    answers: ["27", "28", "29", "30"],
+    correct: 1
+},
+{
+    language: "한국어",
+    langCode: "ko",
+    intro: "이탈리아 르네상스 예술은 전 세계적으로 존경받고 있습니다.",
+    question: "시스티나 성당을 그린 사람은 누구입니까?",
+    answers: ["레오나르도", "미켈란젤로", "라파엘로", "도나텔로"],
+    correct: 1
+}
 ];
 
 // Global Variables
@@ -333,6 +316,7 @@ let questions = [];
 let currentQuestion = 0;
 let score = 0;
 let participantName = '';
+let participantLastname = '';
 let userAnswers = [];
 let answered = false;
 let currentUserId = null;
@@ -361,8 +345,10 @@ function shuffleAnswers(question) {
 // Main Quiz Functions
 function startQuiz() {
     participantName = document.getElementById('participant-name').value.trim();
-    if (!participantName) {
-        alert('Please enter your name!');
+    participantLastname = document.getElementById('participant-lastname').value.trim();
+    
+    if (!participantName || !participantLastname) {
+        alert('Please enter both your first name and last name!');
         return;
     }
     
@@ -503,6 +489,7 @@ async function saveScoreToBackend() {
             },
             body: JSON.stringify({
                 name: participantName,
+                lastname: participantLastname,
                 score: score
             })
         });
@@ -560,7 +547,7 @@ function displayLeaderboard(users) {
             
             row.innerHTML = `
                 <td class="rank">${rankDisplay}</td>
-                <td>${user.name}${isCurrentPlayer ? ' (You)' : ''}</td>
+                <td>${user.name} ${user.lastname}${isCurrentPlayer ? ' (You)' : ''}</td>
                 <td><strong>${user.score} pts</strong></td>
             `;
         });
@@ -581,9 +568,11 @@ function resetQuiz() {
     score = 0;
     userAnswers = [];
     participantName = '';
+    participantLastname = '';
     questions = [];
     currentUserId = null;
     document.getElementById('participant-name').value = '';
+    document.getElementById('participant-lastname').value = '';
     showScreen('welcome-screen');
 }
 
