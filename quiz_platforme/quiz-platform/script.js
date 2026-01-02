@@ -531,7 +531,7 @@ function displayLeaderboard(users) {
     infoBox.textContent = `🌍 Global Leaderboard - ${users.length} participants`;
     
     if (users.length > 0) {
-        users.slice(0, 20).forEach((user, index) => {
+        users.forEach((user, index) => {
             const row = tbody.insertRow();
             
             const isCurrentPlayer = user.id === currentUserId;
